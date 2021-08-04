@@ -7,14 +7,24 @@ main {
   justify-content: center;
 }
 
-main > .contact-form{
+main > .contact-form {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-gap: 10px;
 }
 
-footer{
+footer {
   display: flex;
   justify-content: center;
   margin-top: 50px;
+}
+
+.formWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.formTitleSection {
+  text-align: center;
+  margin-bottom: 40px;
 }

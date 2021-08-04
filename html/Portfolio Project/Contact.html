@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="CSS\Style.css">
   <link rel="stylesheet" href="CSS\Contact.css">
+  <link href="https://fonts.googleapis.com/css2?family=Georama:wght@300&display=swap" rel="stylesheet">
   <title>Harrison Powell</title>
 </head>
 <body>
@@ -53,9 +54,16 @@
   </main>
 
   <footer>
-    <dl id="currentMessages">
+    <div class="formTitleSection">
+      <h3>Contact Messages</h3>
+      <button onclick="deleteMessages();">Clear Messages</button>
+    </div>
+    <div class = "formWrapper">
+      <dl id="currentMessages">
 
-    </dl>
+      </dl>
+    </div>
+
   </footer>
   <script>
     function submitMessage(event) {
@@ -83,9 +91,11 @@
         "messages",
         JSON.stringify(currentMessages)
       );
+
+      renderMessages();
     }
 
-    function renderMessage() {
+    function renderMessages() {
       let currentMessages = [];
 
       if(window.sessionStorage.getItem("messages")) {
@@ -98,9 +108,21 @@
         let listItem = "";
         const currentMessageObj = currentMessages[i];
         listItem += `<dt>${currentMessageObj.name} - ${currentMessageObj.email}</dt>`;
-        
+        listItem += `<dd> ${currentMessageObj.reasonType}: ${currentMessageObj.message}</dd>`;
+        listItem += `<br />`;
+        listItems.push(listItem);
       }
 
+      let descriptionList = document.getElementById('currentMessages');
+      descriptionList.innerHTML = listItems.join('');
+    }
+
+    function deleteMessages() {
+      if(window.sessionStorage.getItem("messages")) {
+        window.sessionStorage.removeItem("messages");
+      }
+
+      renderMessages();
     }
 
   </script>
