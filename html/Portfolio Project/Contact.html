@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="CSS\Style.css">
+  <link rel="stylesheet" href="CSS\Contact.css">
   <title>Harrison Powell</title>
 </head>
 <body>
@@ -23,9 +24,86 @@
   </nav>
   
   <header>
-    <h1> Contact - Harrison Powell</h1>
-    <p>Software Engineer Porfolio</p>
+    <h1> Contact Me</h1>
+    <p>Feel free to contact me via the form below.</p>
   </header>
+
+  <main>
+    <form class="contact-form" onsubmit="return submitMessage(event);">
+      <label for="email">Email:</label>
+      <input type="text" name="email" id="email" required>
+
+      <label for="name">Full name:</label>
+      <input type="text" name="name" id="name" required>
+
+      <label for="reasonType">Reason for Contact:</label>
+      <select name="reasonType" id="reasonType">
+        <option value="workWith">Work with me</option>
+        <option value="question">Question</option>
+        <option value="jobOportunity">Job oportunity</option>
+      </select>
+
+      <label for="message">Message:</label>
+      <textarea name="message" id="message" cols="30" rows="3" required> Leave your message here</textarea>
+
+      <button>Clear</button>
+      <input type="submit">
+
+    </form>
+  </main>
+
+  <footer>
+    <dl id="currentMessages">
+
+    </dl>
+  </footer>
+  <script>
+    function submitMessage(event) {
+      event.preventDefault();
+      const email = document.getElementById("email").value;
+      const name = document.getElementById("name").value;
+      const reasonType = document.getElementById("reasonType").value;
+      const message = document.getElementById("message").value;
+
+      const messageObject = {
+        email,
+        name,
+        reasonType,
+        message
+      };
+
+      let currentMessages = [];
+
+      if(window.sessionStorage.getItem("messages")) {
+        currentMessages = JSON.parse(window.sessionStorage.getItem("messages"));
+      }
+
+      currentMessages.push(messageObject);
+      window.sessionStorage.setItem(
+        "messages",
+        JSON.stringify(currentMessages)
+      );
+    }
+
+    function renderMessage() {
+      let currentMessages = [];
+
+      if(window.sessionStorage.getItem("messages")) {
+        currentMessages = JSON.parse(window.sessionStorage.getItem("messages"));
+      }
+
+      let listItems = [];
+      for(let i = 0; i < currentMessages.length; i++)
+      {
+        let listItem = "";
+        const currentMessageObj = currentMessages[i];
+        listItem += `<dt>${currentMessageObj.name} - ${currentMessageObj.email}</dt>`;
+        
+      }
+
+    }
+
+  </script>
 
 </body>
 </html>

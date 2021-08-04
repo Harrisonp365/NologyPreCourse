@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="CSS\styles.css">
+  <link rel="stylesheet" href="CSS\Contact.css">
   <title>HP Cafe</title>
 </head>
 <body>
@@ -29,6 +30,26 @@
     <h1> Contact Us - HP's Cafe</h1>
     <p>Best roast beans in Sydney</p>
   </header>
+
+  <main>
+    <form class="contact-form">
+      <label for="email">Email:</label>
+      <input type="text" name="email" id="email" required>
+      <label for="name">Full name:</label>
+      <input type="text" name="name" id="name" required>
+      <label for="feedbackType">Feedback Type:</label>
+      <select name="feedbackType" id="feedbackType">
+        <option value="review">Review</option>
+        <option value="complaint">Complaint</option>
+        <option value="event">Book Event</option>
+      </select>
+      <label for="comment">Comment:</label>
+      <textarea name="comment" id="comment" cols="30" rows="3" required> Leave your comment here</textarea>
+
+      <button>Clear</button>
+      <input type="submit">
+    </div>
+  </form>
   
 </body>
 </html>
