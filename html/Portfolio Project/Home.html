@@ -7,38 +7,86 @@
   <link rel="stylesheet" href="CSS\Style.css">
   <link rel="stylesheet" href="CSS\Home.css">
   <link href="https://fonts.googleapis.com/css2?family=Georama:wght@300&display=swap" rel="stylesheet">
+  
   <title>Harrison Powell</title>
+  
 </head>
 <body>
-  <nav>
-    <ul>
-      <li>
-        <a href="Home.html">Home</a>
-      </li>
-      <li>
-        <a href="AboutMe.html">About Me</a>
-      </li>
-      <li>
-        <a href="Contact.html">Contact Me</a>
-      </li>
-    </ul>
-  </nav>
-  
-  <header>
-    <h1> Home - Harrison Powell</h1>
-    <p>Software Engineer Porfolio</p>
-  </header>
+  <div class="nav">
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+      <div class="nav-title">
+        H Powell
+      </div>
+    </div>
 
-  <main>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+    
+    <div class="nav-links">
+      <a href="Home.html">Home</a>
+      <a href="AboutMe.html">About Me</a>
+      <a href="Contact.html">Contact Me</a>
+      <a href="https://github.com/Harrisonp365" target="_blank">GitHub</a>
+      <!-- target is just to open up another tab, keep user on the portfolio page -->
+    </div>
+  </div>
+
+  <header>
+    <h1> Harrison Powell</h1>
+    <h4>Junior Software Engineer</h4>
+  </header>
+  <!-- Gallery is not responisve like the nav bar is but all images are links to related websites  -->
+  <main class="imageGallery">
     <div class="gallery">
-      <img src="Utils\images\noGoodRacing.jfif">
-      <img src="Utils\images\C++Logo.png">
-      <img src="Utils\images\GBPUSDChart.png">
-      <img src="Utils\images\aimlab100K.jfif">
-      <img src="Utils\images\0RBGPCBuild.jfif">
-      <img src="Utils\images\hondata.jfif">
+      <a target="_blank" href="https://www.roughsmoke.com/post/no-good-racing-photo-set-1">
+        <img src="Utils\images\noGoodRacing.jfif">
+      </a>
+      <div class="desc">No Good racing is a Honda racing team from Japan. They were formed in 1985 and were originally a street racing team. I really enjoy learning about their history and what has changed since they started.</div>
+    </div>
+    <div class="gallery">
+      <a target="_blank" href="https://www.stroustrup.com/C++.html">
+        <img src="Utils\images\C++Logo.png">
+      </a>
+      <div class="desc">C++ is currently my favourite programming language. I have spent most of my time coding using C++ and thoroughly enjoy the language.</div>
+    </div>
+    <div class="gallery">
+      <a target="_blank" href="https://www.investopedia.com/articles/forex/11/why-trade-forex.asp">
+        <img src="Utils\images\GBPUSDChart.png">
+      </a>
+      <div class="desc">This is a forex chart to represent how I am currently learning all about trading, from how the graphs work and what they mean all the way to building out simple trading bots for myself.</div>
+    </div>
+    <div class="gallery">
+      <a target="_blank" href="https://aimlab.gg/">
+        <img src="Utils\images\aimlab100K.jfif">
+      </a>
+      <div class="desc">I spend maybe too much time "aim traning" for video games. I find clicking on little blue dots across the screen as fast as I can really relaxing at the end of the day and a nice time to throw on some tunes and wind down.</div>
+    </div>
+    <div class="gallery">
+      <a target="_blank" href="https://pcpartpicker.com/">
+        <img src="Utils\images\0RBGPCBuild.jfif">
+      </a>
+      <div class="desc">One of my favourite things to do is build PC's for people. I enjoy the whole process from researching what parts will fit their wants and needs all the way to building it. Software setup on the other hand is extremly tedious and a pain sometimes but I still love it.</div>
+    </div>
+    <div class="gallery">
+      <a target="_blank" href="https://www.motec.com.au/home">
+        <img src="Utils\images\hondata.jfif">
+      </a>
+      <div class="desc">Progamming ECU's on cars or "tuning" them is something I have got to do my fair share of and it is what got me into software engineering in the first place. It is an ever changing field with people always pushing the boundaries of what though possible.</div>
     </div>
   </main>
 
 </body>
 </html>
+
+
+
+      
+      
+      
+      

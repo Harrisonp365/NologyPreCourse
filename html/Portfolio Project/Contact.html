@@ -10,23 +10,32 @@
   <title>Harrison Powell</title>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li>
-        <a href="Home.html">Home</a>
-      </li>
-      <li>
-        <a href="AboutMe.html">About Me</a>
-      </li>
-      <li>
-        <a href="Contact.html">Contact Me</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="nav">
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+      <div class="nav-title">
+        H Powell
+      </div>
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+    
+    <div class="nav-links">
+      <a href="Home.html">Home</a>
+      <a href="AboutMe.html">About Me</a>
+      <a href="Contact.html">Contact Me</a>
+      <a href="https://github.com/Harrisonp365" target="_blank">GitHub</a>
+    </div>
+  </div>
   
   <header>
     <h1> Contact Me</h1>
-    <p>Feel free to contact me via the form below.</p>
+    <h4>Feel free to contact me via the form below.</h4>
   </header>
 
   <main>
@@ -65,6 +74,7 @@
     </div>
 
   </footer>
+
   <script>
     function submitMessage(event) {
       event.preventDefault();

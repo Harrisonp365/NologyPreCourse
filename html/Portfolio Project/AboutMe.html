@@ -5,28 +5,47 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="CSS\Style.css">
+  <link rel="stylesheet" href="CSS\AboutMe.css">
   <link href="https://fonts.googleapis.com/css2?family=Georama:wght@300&display=swap" rel="stylesheet">
   <title>Harrison Powell</title>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li>
-        <a href="Home.html">Home</a>
-      </li>
-      <li>
-        <a href="AboutMe.html">About Me</a>
-      </li>
-      <li>
-        <a href="Contact.html">Contact Me</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="nav">
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+      <div class="nav-title">
+        H Powell
+      </div>
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+    
+    <div class="nav-links">
+      <a href="Home.html">Home</a>
+      <a href="AboutMe.html">About Me</a>
+      <a href="Contact.html">Contact Me</a>
+      <a href="https://github.com/Harrisonp365" target="_blank">GitHub</a>
+    </div>
+  </div>
   
   <header>
     <h1> About Me</h1>
-    <p>Software Engineer Porfolio</p>
+    <h2>Who am I and what I do?</h2>
   </header>
-
+  
+  <div class="row">
+    <div class="col">
+      <img class="mePic" src="Utils\images\myhead.jpg" alt="Image of me">
+    </div>
+    <div class="col">
+      <p class="desc">Hi, I'm Harrison Powell, a junior software engineer based in Sydney, Australia. I have a strong focus on C++ development along with JavaScript and I'm also on a journey to further my core Java skills. I have a keen interest in the financial industry from forex high frequency trading to more out there investments such as crypto. Crypto has also drawn me into the blockchain space from where I have tinkered building simple dApps and built my own blockchain and token using C++ this was then deployed on the Ethereum Ropsten test network. PS. Sorry about the photo I don't have any photos of myself.
+      </p>
+    </div>
+  </div>
 </body>
 </html>
