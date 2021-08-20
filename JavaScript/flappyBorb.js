@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded' , () => {
     bird.style.bottom = birdBottom + 'px'
     bird.style.left = birdLeft + 'px'
   }
-
+  
   let limer = setInterval(startGame, 20)
-
+  
   function jump() {
     birdBottom += 50 //Each jump is 50px above current position
     bird.style.bottom = birdBottom + 'px'

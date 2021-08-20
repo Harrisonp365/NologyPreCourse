@@ -1,27 +1,35 @@
-.game-container {
-  width: 500px;
-  height: 730px;
-  position: absolute;
+* {
+  padding: 0;
+  margin: 0;
 }
 
-.sky {
-  background-color: lightblue;
-  width: 500px;
-  height: 580px;
-  position: absolute;
+nav {
+  margin-bottom: 20px;
 }
 
-.ground {
-  background-color: brown;
-  width: 500px;
-  height: 150px;
-  position: absolute;
-  top: 580px;
+nav > ul {
+  list-style-type: none;
+  border: 2px solid black;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.bird {
-  background-color: yellow;
-  position: absolute;
-  width: 60px;
-  height: 45px;
+nav > ul > li > a {
+  color: #222;
+  text-decoration: none;
+}
+
+nav > ul > li > a:hover {
+  color: darkgreen;
+  text-decoration: underline;
+}
+
+header {
+  text-align: center;
+}
+
+header > h1 {
+  margin-bottom: 10px;
 }
