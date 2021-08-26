@@ -8,6 +8,29 @@ let frames = 0;
 const sprite = new Image();
 sprite.src = "Images/sprite.png";
 
+//Game state
+const state = {
+  current: 0,
+  ready: 0,
+  game: 1,
+  over: 2
+};
+
+cvs.addEventListener("click", function(evt){
+  switch(state.current){
+    case state.ready:
+      state.current = state.game;
+      break;
+    case state.game:
+      bird.flap();
+      break;
+    case state.over:
+      state.current = state.ready;
+      break;
+  }
+  //state was checked manually through state.current in browser console
+});
+
 //Cutting out background image from sprite.png
 const background = {
   sX: 0,
@@ -57,7 +80,11 @@ const bird = {
     let bird = this.animation[this.frame];
 
     ctx.drawImage(sprite, bird.sX, bird.sY, this.w, this.h, this.x - this.w/2, this.y - this.h/2, this.w, this.h);
-  }
+  },
+
+  flap : function() {
+
+  },
 }
 
 //Ready message
@@ -70,7 +97,9 @@ const ready = {
   y: 80,
 
   draw : function() {
-    ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
+    if(state.current == state.ready) {
+      ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
+    }
   }
 }
 
@@ -84,7 +113,9 @@ const gameOver = {
   y: 90,
 
   draw : function() {
-    ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
+    if(state.current == state.over) {
+      ctx.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
+    } 
   }
 }
 
