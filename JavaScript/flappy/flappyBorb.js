@@ -85,6 +85,13 @@ const bird = {
   flap : function() {
 
   },
+
+  update : function() {
+    //ready state = slow flap in game = fast flap
+    this.period = state.current == state.ready ? 10 : 5;
+    this.frame += frames%this.period == 0 ? 1 : 0; //incriment frame by 1 each period
+    this.frame = this.frame%this.animation.length;
+  }
 }
 
 //Ready message
@@ -130,7 +137,7 @@ function draw() {
 }
 
 function update() {
-
+  bird.update();
 }
 
 function loop() {
