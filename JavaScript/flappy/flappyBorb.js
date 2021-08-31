@@ -69,7 +69,7 @@ const foreGround = {
   }
 
 }
-
+//Cutting pipes from sprite.png & collision
 const pipes = {
   position: [],
   top: {
@@ -99,9 +99,24 @@ const pipes = {
       let p = this.position[i];
       p.x -= this.dx;
 
+      //collision
+      let bottomPipeYpos = p.y + this.h + this.gap;
+      //collision top 
+      if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w
+        && bird.y + bird.radius > p.y && bird.y - bird.radius < p.y + this.h) {
+          state.current = state.over;
+      }
+
+      //collision bot
+      if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w
+        && bird.y + bird.radius > bottomPipeYpos && bird.y - bird.radius < bottomPipeYpos + this.h) {
+          state.current = state.over;
+      }
+
       //remove pipes from array after once passed
       if(p.x + this.w <= 0) {
         this.position.shift();
+        score.value += 1;
       }
     }
   },
@@ -136,6 +151,7 @@ const bird = {
   jump: 4.5,
   speed: 0,
   rotation : 0,
+  radius: 10,
 
   draw : function() {
     let bird = this.animation[this.frame];
@@ -180,7 +196,6 @@ const bird = {
   }
 }
 
-//Ready message
 const ready = {
   sX: 0,
   sY: 228,
@@ -196,7 +211,32 @@ const ready = {
   }
 }
 
-//Game over
+const score = {
+  best: parseInt(localStorage.getItem("best")) || 0,
+  value: 0,
+
+  draw : function() {
+    ctx.fillStyle = "#FFF";
+    ctx.strokeStyle = "#000";
+
+    if(state.current == state.game) {
+      ctx.lineWidth = 2;
+      ctx.font = "34px Teko";
+      ctx.fillText(this.value, cvs.width/2, 50);
+      ctx.strokeText(this.value, cvs.width/2, 50);
+
+    } else if(state.current == state.over) {
+      //most recent score
+      ctx.font = "24px Teko";
+      ctx.fillText(this.value, 225, 186);
+      ctx.strokeText(this.value, 225, 186);
+      //best score
+      ctx.fillText(this.value, 225, 228);
+      ctx.strokeText(this.value, 225, 228);
+    }
+  }
+}
+
 const gameOver = {
   sX: 175,
   sY: 228,
@@ -221,6 +261,7 @@ function draw() {
   bird.draw();
   ready.draw();
   gameOver.draw();
+  score.draw();
 }
 
 function update() {
