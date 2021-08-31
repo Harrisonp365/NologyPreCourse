@@ -70,6 +70,55 @@ const foreGround = {
 
 }
 
+const pipes = {
+  position: [],
+  top: {
+    sX: 502,
+    sY: 0
+  },
+  bottom: {
+    sX: 553,
+    sY: 0
+  },
+  w: 53,
+  h: 400,
+  gap: 85,
+  maxYPos: -150,
+  dx: 2,
+
+  update:function() {
+    if(state.current !== state.game) return;
+
+    if(frames%100 == 0) {
+      this.position.push({
+        x:cvs.width,
+        y: this.maxYPos * (Math.random() + 1)
+      });
+    }
+    for(let i = 0; i < this.position.length; i++){
+      let p = this.position[i];
+      p.x -= this.dx;
+
+      //remove pipes from array after once passed
+      if(p.x + this.w <= 0) {
+        this.position.shift();
+      }
+    }
+  },
+
+  draw:function(){
+    for(let i = 0; i < this.position.length; i++) {
+      let p = this.position[i];
+      let topYPos = p.y;
+      let bottomYPos = p.y + this.h + this.gap;
+      //top
+      ctx.drawImage(sprite, this.top.sX, this.top.sY, this.w, this.h, p.x, topYPos, this.w, this.h);
+      //bot
+      ctx.drawImage(sprite, this.bottom.sX, this.bottom.sY, this.w, this.h, p.x, bottomYPos, this.w, this.h);
+    }
+  }
+}
+
 //The bird has 3 images one for each animation up, middle, down
 const bird = {
   animation : [
@@ -167,6 +216,7 @@ function draw() {
   ctx.fillStyle = "#70c5ce"; //light blue
   ctx.fillRect(0, 0, cvs.width, cvs.height);
   background.draw();
+  pipes.draw();
   foreGround.draw();
   bird.draw();
   ready.draw();
@@ -176,6 +226,7 @@ function draw() {
 function update() {
   bird.update();
   foreGround.update();
+  pipes.update();
 }
 
 function loop() {
