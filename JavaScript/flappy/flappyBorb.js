@@ -73,11 +73,11 @@ const foreGround = {
 const pipes = {
   position: [],
   top: {
-    sX: 502,
+    sX: 552,
     sY: 0
   },
   bottom: {
-    sX: 553,
+    sX: 502,
     sY: 0
   },
   w: 53,
