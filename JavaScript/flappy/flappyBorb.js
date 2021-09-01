@@ -9,6 +9,13 @@ const degree = Math.PI/180;
 const sprite = new Image();
 sprite.src = "Images/sprite.png";
 
+const startBtn = {
+  x: 120,
+  y:263,
+  w:83,
+  h: 29
+}
+
 //Game state
 const state = {
   current: 0,
@@ -26,7 +33,17 @@ cvs.addEventListener("click", function(evt){
       bird.flap();
       break;
     case state.over:
-      state.current = state.ready;
+      let rect = cvs.getBoundingClientRect();
+      let evntX = evt.clientX - rect.left;
+      let evntY = evt.clientY - rect.top;
+
+      if(evntX >= startBtn.x && evntX <= startBtn.x + startBtn.w 
+        && evntY >= startBtn.y && evntY <= startBtn.y + startBtn.h) {
+          pipes.reset();
+          bird.resetSpeed();
+          score.reset();
+          state.current = state.ready;
+        }
       break;
   }
   //state was checked manually through state.current in browser console
@@ -133,6 +150,9 @@ const pipes = {
       //bot
       ctx.drawImage(sprite, this.bottom.sX, this.bottom.sY, this.w, this.h, p.x, bottomYPos, this.w, this.h);
     }
+  },
+  reset : function() {
+    this.position = [];
   }
 }
 
@@ -195,6 +215,9 @@ const bird = {
         this.rotation = -25 * degree; //bird jumping
       }
     }
+  },
+  resetSpeed : function() {
+    this.speed = 0;
   }
 }
 
@@ -236,6 +259,10 @@ const score = {
       ctx.fillText(this.best, 225, 228);
       ctx.strokeText(this.best, 225, 228);
     }
+  },
+
+  reset : function() {
+    this.value = 0;
   }
 }
 
