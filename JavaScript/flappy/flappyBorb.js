@@ -9,6 +9,18 @@ const degree = Math.PI/180;
 const sprite = new Image();
 sprite.src = "Images/sprite.png";
 
+//Sounds
+const DieSound = new Audio();
+DieSound.src = "Sounds/sfx_die.wav";
+const FlapSound = new Audio();
+FlapSound.src = "Sounds/sfx_flap.wav";
+const HitSound = new Audio();
+HitSound.src = "Sounds/sfx_hit.wav";
+const ScoreSound = new Audio();
+ScoreSound.src = "Sounds/sfx_point.wav";
+const SwooshSound = new Audio();
+SwooshSound.src = "Sounds/sfx_swooshing.wav";
+
 const startBtn = {
   x: 120,
   y:263,
@@ -28,9 +40,11 @@ cvs.addEventListener("click", function(evt){
   switch(state.current){
     case state.ready:
       state.current = state.game;
+      SwooshSound.play();
       break;
     case state.game:
       bird.flap();
+      FlapSound.play();
       break;
     case state.over:
       let rect = cvs.getBoundingClientRect();
@@ -122,18 +136,21 @@ const pipes = {
       if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w
         && bird.y + bird.radius > p.y && bird.y - bird.radius < p.y + this.h) {
           state.current = state.over;
+          HitSound.play();
       }
 
       //collision bot
       if(bird.x + bird.radius > p.x && bird.x - bird.radius < p.x + this.w
         && bird.y + bird.radius > bottomPipeYpos && bird.y - bird.radius < bottomPipeYpos + this.h) {
           state.current = state.over;
+          HitSound.play();
       }
 
       //remove pipes from array after once passed
       if(p.x + this.w <= 0) {
         this.position.shift();
         score.value += 1;
+        ScoreSound.play();
         score.best = Math.max(score.value, score.best);
         localStorage.setItem("best", score.best);
       }
@@ -169,8 +186,8 @@ const bird = {
   w: 34,
   h: 26,
   frame: 0,
-  gravity: 0.25,
-  jump: 4.5,
+  gravity: 0.23,
+  jump: 4.2,
   speed: 0,
   rotation : 0,
   radius: 10,
@@ -205,6 +222,7 @@ const bird = {
         this.y = cvs.height - foreGround.h - this.h/2;
         if(state.current == state.game) {
           state.current = state.over;
+          DieSound.play();
         }
       }
 
